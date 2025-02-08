@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Complete Appointment";
+}
+
+<div class="container mt-5">
+    <h1>Complete Appointment with Dr. @Model.Name</h1>
+
+    <form id="appointmentForm">
+        <label for="patient-name">Patient Name:</label>
+        <input type="text" id="patient-name" class="form-control" placeholder="Enter your name" required>
+
+        <label for="appointment-date" class="mt-2">Appointment Date:</label>
+        <input type="date" id="appointment-date" class="form-control" required>
+
+        <label for="appointment-time" class="mt-2">Appointment Time:</label>
+        <input type="time" id="appointment-time" class="form-control" required>
+
+        <button type="submit" class="btn btn-primary mt-3">Complete Appointment</button>
+    </form>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Appointment Completed</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Your appointment has been successfully completed. Thank you! 😊
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("appointmentForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // منع إعادة تحميل الصفحة
+
+            // عرض المودال بعد إكمال الحجز
+            var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+            myModal.show();
+        });
+    </script>
+}
