@@ -1,6 +1,7 @@
 ﻿using BookAppointment.Data;
 using BookAppointment.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookAppointment.Controllers
 {
@@ -44,5 +45,12 @@ namespace BookAppointment.Controllers
             
         }
 
+
+        public IActionResult AllAppointment()
+        {
+
+            var appointment = dbContext.Appointments.Include(a => a.Doctor);
+            return View(appointment.ToList());
+        }
     }
 }
