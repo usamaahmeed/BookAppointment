@@ -5,15 +5,17 @@
 <div class="container mt-5">
     <h1>Complete Appointment with Dr. @Model.Name</h1>
 
-    <form id="appointmentForm">
+    <form id="appointmentForm" action="/Doctors/Create">
         <label for="patient-name">Patient Name:</label>
-        <input type="text" id="patient-name" class="form-control" placeholder="Enter your name" required>
+        <input type="text" id="patient-name" class="form-control" placeholder="Enter your name" name="PatientName" required>
 
         <label for="appointment-date" class="mt-2">Appointment Date:</label>
-        <input type="date" id="appointment-date" class="form-control" required>
+        <input type="date" id="appointment-date" class="form-control" name="AppointmentDate" required>
 
         <label for="appointment-time" class="mt-2">Appointment Time:</label>
-        <input type="time" id="appointment-time" class="form-control" required>
+        <input type="time" id="appointment-time" class="form-control" name="AppointmentTime" required>
+
+        <input type="hidden" name="DoctorId" value="@Model.Id">
 
         <button type="submit" class="btn btn-primary mt-3">Complete Appointment</button>
     </form>
@@ -31,7 +33,7 @@
                 Your appointment has been successfully completed. Thank you! 😊
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" onclick="redirectToPage()">Close</button>
             </div>
         </div>
     </div>
@@ -39,12 +41,16 @@
 
 @section Scripts {
     <script>
-        document.getElementById("appointmentForm").addEventListener("submit", function(event) {
+         document.getElementById("appointmentForm").addEventListener("submit", function(event) {
             event.preventDefault(); // منع إعادة تحميل الصفحة
 
             // عرض المودال بعد إكمال الحجز
             var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
             myModal.show();
         });
+
+        function redirectToPage() {
+            window.location.href = "/Doctors/BookAppointment"; // توجيه المستخدم إلى الصفحة المطلوبة
+        }
     </script>
 }

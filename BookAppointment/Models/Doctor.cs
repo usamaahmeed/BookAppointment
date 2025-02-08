@@ -6,5 +6,6 @@
         public string Name { get; set; }
         public string Specialization { get; set; }
         public string Img { get; set; }
+        public List<Appointments> Appointments { get; set; }
     }
 }

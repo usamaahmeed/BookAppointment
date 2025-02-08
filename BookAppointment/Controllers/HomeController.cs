@@ -22,6 +22,11 @@ namespace BookAppointment.Controllers
         {
             return View();
         }
+        public IActionResult NotFoundPage()
+        {
+
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
